@@ -1,13 +1,12 @@
-import { useMemo, useState } from 'react'
-import { loadStripe } from '@stripe/stripe-js'
+import { useMemo } from 'react'
 import { useCart } from '../context/CartContext'
 import payments from '../shared/payments'
 
 export default function Checkout(){
   const { items, totalCents, clearCart } = useCart()
   const total = (totalCents/100).toFixed(2)
-  const email = import.meta.env.VITE_CONTACT_EMAIL || 'orders@pawpawceramics.com'
-  const [isLoading, setIsLoading] = useState(false)
+  const email = import.meta.env.VITE_CONTACT_EMAIL || 'paw.paw.ceramics@gmail.com'
+  
 
   const emailHref = useMemo(() => {
     const lines = [
@@ -31,46 +30,7 @@ export default function Checkout(){
   const cashAppUrl = payments.cashTag ? `https://cash.app/$${payments.cashTag}/${total}` : null
   const venmoUrl = payments.venmo ? `https://venmo.com/${payments.venmo}?txn=pay&amount=${total}&note=${encodeURIComponent('Paw Paw Ceramics order')}` : null
 
-  async function startStripeCheckout(){
-    try{
-      if(!payments.stripePublishableKey || !payments.backendCheckoutUrl){
-        alert('Stripe not configured. Set VITE_STRIPE_PUBLISHABLE_KEY and VITE_BACKEND_CHECKOUT_URL in your environment.');
-        return
-      }
-      setIsLoading(true)
-      const stripe = await loadStripe(payments.stripePublishableKey)
-      if(!stripe){
-        throw new Error('Failed to load Stripe')
-      }
-      const response = await fetch(payments.backendCheckoutUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          lineItems: items.map(i => ({ id: i.id, quantity: i.quantity })),
-          // Optional: include email to prefill customer_email on server
-        })
-      })
-      if(!response.ok){
-        const text = await response.text()
-        throw new Error(text || 'Failed to create checkout session')
-      }
-      const { sessionId, url } = await response.json()
-      // Prefer redirectToCheckout with sessionId; fallback to url
-      if(sessionId){
-        const { error } = await stripe.redirectToCheckout({ sessionId })
-        if(error) throw error
-      }else if(url){
-        window.location.href = url
-      }else{
-        throw new Error('Server did not return a sessionId or url')
-      }
-    }catch(err){
-      console.error(err)
-      alert('Could not start checkout. Please try again later.')
-    }finally{
-      setIsLoading(false)
-    }
-  }
+  
 
   return (
     <section className="py-8">
@@ -120,11 +80,6 @@ export default function Checkout(){
                 {payPalUrl && <a target="_blank" rel="noreferrer" href={payPalUrl} className="rounded-md border border-slate-200 px-4 py-3 text-center hover:shadow">Pay with PayPal</a>}
                 {cashAppUrl && <a target="_blank" rel="noreferrer" href={cashAppUrl} className="rounded-md border border-slate-200 px-4 py-3 text-center hover:shadow">Pay with Cash App</a>}
                 {venmoUrl && <a target="_blank" rel="noreferrer" href={venmoUrl} className="rounded-md border border-slate-200 px-4 py-3 text-center hover:shadow">Pay with Venmo</a>}
-                {payments.stripePublishableKey && payments.backendCheckoutUrl && (
-                  <button onClick={startStripeCheckout} disabled={isLoading} className="rounded-md bg-black px-4 py-3 text-center font-medium text-white hover:shadow disabled:opacity-60">
-                    {isLoading ? 'Redirecting…' : 'Pay with card (Stripe)'}
-                  </button>
-                )}
                 {!payPalUrl && !cashAppUrl && !venmoUrl && (
                   <p className="text-sm text-slate-600">Add your PayPal.me, Cash App, or Venmo handle in `src/shared/payments.js` for instant links.</p>
                 )}

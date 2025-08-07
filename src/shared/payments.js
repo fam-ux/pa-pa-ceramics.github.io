@@ -8,8 +8,6 @@ const payments = {
   paypalMe: '',
   cashTag: '',
   venmo: '',
-  stripePublishableKey: import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY || '',
-  backendCheckoutUrl: import.meta.env.VITE_BACKEND_CHECKOUT_URL || '',
 }
 
 export default payments
