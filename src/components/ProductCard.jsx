@@ -9,7 +9,7 @@ export default function ProductCard({ product }){
       <div className="grid h-48 place-items-center bg-gradient-to-b from-slate-50 to-slate-100">
         {image ? (
           <img
-            src={`${import.meta.env.BASE_URL}products/${image}`}
+            src={`products/${image}`}
             alt={imageAlt || name}
             className="h-44 w-auto object-contain"
             loading="lazy"
