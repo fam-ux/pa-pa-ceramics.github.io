@@ -7,8 +7,8 @@ export default function Navbar(){
     <header className="sticky top-0 z-20 border-b border-slate-200 bg-white/80 backdrop-blur">
       <div className="container flex items-center justify-between py-3">
         <Link to="/" className="flex items-center gap-2 font-bold">
-          <img src={`${import.meta.env.BASE_URL}favicon.svg`} alt="Pa Pa Ceramics" className="h-7 w-7" />
-          <span>Pa Pa Ceramics</span>
+          <img src={`${import.meta.env.BASE_URL}favicon.svg`} alt="Paw Paw Creations" className="h-7 w-7" />
+          <span>Paw Paw Creations</span>
         </Link>
         <nav className="flex items-center gap-1">
           <NavLink to="/shop" className={({isActive}) => `px-3 py-2 rounded-md ${isActive ? 'bg-brand-light text-brand' : 'hover:bg-slate-100'}`}>Shop</NavLink>

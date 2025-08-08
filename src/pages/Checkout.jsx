@@ -21,14 +21,14 @@ export default function Checkout(){
       'Phone:',
       'Pickup or shipping address (city, state):',
     ]
-    const subject = encodeURIComponent('Order from Pa Pa Ceramics website')
+    const subject = encodeURIComponent('Order from Paw Paw Creations website')
     const body = encodeURIComponent(lines.join('\n'))
     return `mailto:${email}?subject=${subject}&body=${body}`
   }, [items, total, email])
 
   const payPalUrl = payments.paypalMe ? `https://paypal.me/${payments.paypalMe}/${total}` : null
   const cashAppUrl = payments.cashTag ? `https://cash.app/$${payments.cashTag}/${total}` : null
-  const venmoUrl = payments.venmo ? `https://venmo.com/${payments.venmo}?txn=pay&amount=${total}&note=${encodeURIComponent('Pa Pa Ceramics order')}` : null
+  const venmoUrl = payments.venmo ? `https://venmo.com/${payments.venmo}?txn=pay&amount=${total}&note=${encodeURIComponent('Paw Paw Creations order')}` : null
 
   
 
