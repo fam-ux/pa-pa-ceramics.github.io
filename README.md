@@ -1,4 +1,4 @@
-# PawPaw Ceramics
+# Paw-Paw Ceramics
 
 ## Getting started
 
