@@ -27,7 +27,7 @@ const computedBase = (() => {
   if (explicitBase) return explicitBase
   if (isGithubActions) return isUserOrOrgPagesRepo ? '/' : `/${repositoryName}/`
   // Local build/custom domains: use root unless explicitly overridden
-  return packageNameBase ?? '/'
+  return packageNameBase ?? '/pa-pa-ceramics.github.io/'
 })()
 
 export default defineConfig({
