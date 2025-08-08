@@ -9,14 +9,14 @@ export default function Home(){
       <section className="bg-gradient-to-b from-brand-light/60 to-transparent">
         <div className="container grid items-center gap-8 py-12 md:grid-cols-2">
           <div className="space-y-4">
-            <h1 className="text-3xl font-bold leading-tight md:text-4xl">Handmade Ceramics from a San Antonio Local</h1>
-            <p className="text-lg text-slate-700">Plates and mugs lovingly crafted and hand‑painted by a senior artist. Themes include pandas, dogs, cats, and Texas florals. When you shop here, you support a local small business and a creative grandma.</p>
+            <h1 className="text-3xl font-bold leading-tight md:text-4xl">Hand‑drawn, Hand‑painted with Care</h1>
+            <p className="text-lg text-slate-700">I’m not an artist or a business woman, just a retiree who loves to draw, paint, and craft. "Paw Paw" means grandma in our culture, and every piece is hand-painted, oven-cured, and sealed with care so it can bring a little joy to your home.</p>
             <div className="flex gap-3">
-              <Link to="/shop" className="rounded-md bg-brand px-4 py-2 font-medium text-white hover:shadow">Shop Ceramics</Link>
-              <Link to="/about" className="rounded-md border border-slate-200 px-4 py-2 hover:shadow">Meet Pa Pa</Link>
+              <Link to="/shop" className="rounded-md bg-brand px-4 py-2 font-medium text-white hover:shadow">Shop</Link>
+              <Link to="/about" className="rounded-md border border-slate-200 px-4 py-2 hover:shadow">Meet Paw Paw</Link>
             </div>
             <div className="flex flex-wrap gap-2 pt-1 text-sm" aria-label="Local and small business badges">
-              {['San Antonio, TX','Small Business','Senior Artist','Hand Painted'].map(b => (
+              {['San Antonio, TX','Small Business','Hand Drawn','Sealed'].map(b => (
                 <span key={b} className="rounded-full border border-dashed border-brand bg-brand-light px-3 py-1 text-brand">{b}</span>
               ))}
             </div>
@@ -42,10 +42,10 @@ export default function Home(){
         <div className="container grid items-start gap-6 md:grid-cols-2">
           <div>
             <h3 className="mb-2 text-lg font-semibold">Why Shop Local?</h3>
-            <p>Every purchase helps keep art alive in San Antonio. Pa Pa is a senior citizen who pours love and patience into each piece. Your support goes directly to a local artist and her small business.</p>
+            <p>Every purchase helps keep art alive in San Antonio. Paw Paw is a senior citizen who pours love and patience into each piece. This is a family project — the name was created by her grandson, and the website was designed by him too. Your support goes directly to a local artist and her small family business.</p>
           </div>
           <div className="grid gap-3">
-            {[['🎨','One‑of‑a‑kind','No two pieces are the same—each is hand‑painted with care.'],['🌸','Nature & Pets','Beloved themes: pandas, pups, kitties, and Texas blooms.'],['🤝','Community','Supporting a neighbor keeps your dollars close to home.']].map(([icon,title,desc]) => (
+            {[['🎨','One‑of‑a‑kind','No two pieces are the same—each is hand‑painted with care.'],['🌸','Nature & Pets','Beloved themes: pandas, pups, kitties, and Texas blooms.'],['👨‍👩‍👧','Family Project','Named by her grandson and website designed by him — built with love.'],['🤝','Community','Supporting a neighbor keeps your dollars close to home.']].map(([icon,title,desc]) => (
               <div key={title} className="flex items-start gap-3 rounded-xl border border-slate-200 bg-white p-4">
                 <div className="text-xl">{icon}</div>
                 <div>
