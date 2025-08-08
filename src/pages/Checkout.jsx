@@ -74,18 +74,16 @@ export default function Checkout(){
               </div>
               <p className="mt-2 text-sm text-slate-600">We’ll reply with pickup/shipping details and a Venmo link to pay securely.</p>
             </div>
-            <div className="rounded-xl border border-slate-200 p-4">
+            {/* <div className="rounded-xl border border-slate-200 p-4">
               <h2 className="mb-2 text-lg font-semibold">Pay online (optional)</h2>
               <div className="grid gap-3 sm:grid-cols-2">
                 {payPalUrl && <a target="_blank" rel="noreferrer" href={payPalUrl} className="rounded-md border border-slate-200 px-4 py-3 text-center hover:shadow">Pay with PayPal</a>}
                 {cashAppUrl && <a target="_blank" rel="noreferrer" href={cashAppUrl} className="rounded-md border border-slate-200 px-4 py-3 text-center hover:shadow">Pay with Cash App</a>}
                 {venmoUrl && <a target="_blank" rel="noreferrer" href={venmoUrl} className="rounded-md border border-slate-200 px-4 py-3 text-center hover:shadow">Pay with Venmo</a>}
-                {!payPalUrl && !cashAppUrl && !venmoUrl && (
-                  <p className="text-sm text-slate-600">Add your PayPal.me, Cash App, or Venmo handle in `src/shared/payments.js` for instant links.</p>
-                )}
+                {!payPalUrl && !cashAppUrl && !venmoUrl}
               </div>
-              <p className="mt-3 text-sm text-slate-600">We can also enable card payments via Stripe later. For now, email works best.</p>
-            </div>
+              <p className="mt-3 text-sm text-slate-600">If interest is high, we can enable card payments via Stripe later. For now, email works best!</p>
+            </div> */}
           </div>
         )}
       </div>
