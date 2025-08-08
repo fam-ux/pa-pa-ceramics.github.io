@@ -9,19 +9,22 @@ import About from './pages/About'
 import Contact from './pages/Contact'
 import Checkout from './pages/Checkout'
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <App />,
-    children: [
-      { index: true, element: <Home /> },
-      { path: 'shop', element: <Shop /> },
-      { path: 'about', element: <About /> },
-      { path: 'contact', element: <Contact /> },
-      { path: 'checkout', element: <Checkout /> },
-    ],
-  },
-])
+const router = createBrowserRouter(
+  [
+    {
+      path: '/',
+      element: <App />,
+      children: [
+        { index: true, element: <Home /> },
+        { path: 'shop', element: <Shop /> },
+        { path: 'about', element: <About /> },
+        { path: 'contact', element: <Contact /> },
+        { path: 'checkout', element: <Checkout /> },
+      ],
+    },
+  ],
+  { basename: import.meta.env.BASE_URL }
+)
 
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>
