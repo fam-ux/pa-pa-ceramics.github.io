@@ -5,7 +5,7 @@ import payments from '../shared/payments'
 export default function Checkout(){
   const { items, totalCents, clearCart } = useCart()
   const total = (totalCents/100).toFixed(2)
-  const email = import.meta.env.VITE_CONTACT_EMAIL || 'paw.paw.ceramics@gmail.com'
+  const email = import.meta.env.VITE_CONTACT_EMAIL || 'haxule56@gmail.com'
   
 
   const emailHref = useMemo(() => {

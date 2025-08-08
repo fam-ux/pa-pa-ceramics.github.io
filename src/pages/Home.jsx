@@ -10,7 +10,7 @@ export default function Home(){
         <div className="container grid items-center gap-8 py-12 md:grid-cols-2">
           <div className="space-y-4">
             <h1 className="text-3xl font-bold leading-tight md:text-4xl">Hand‑drawn, Hand‑painted with Care</h1>
-            <p className="text-lg text-slate-700">I’m not an artist or a business woman, just a retiree who loves to draw, paint, and craft. "Paw Paw" means grandma in our culture, and every piece is hand-painted, oven-cured, and sealed with care so it can bring a little joy to your home.</p>
+            <p className="text-lg text-slate-700">I’m not an artist or a business woman, just a retiree who loves to draw, paint, and do crafts. "Paw Paw" means grandma in our culture, and every piece is hand-painted, oven-cured, and sealed with care so it can bring a little joy to your home.</p>
             <div className="flex gap-3">
               <Link to="/shop" className="rounded-md bg-brand px-4 py-2 font-medium text-white hover:shadow">Shop</Link>
               <Link to="/about" className="rounded-md border border-slate-200 px-4 py-2 hover:shadow">Meet Paw Paw</Link>
