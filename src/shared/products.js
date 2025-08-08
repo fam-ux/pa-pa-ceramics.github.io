@@ -1,5 +1,5 @@
 const products = [
-  { id: 'panda-mug-1', name: 'Panda Hug Mug', priceCents: 2800, type: 'mug', theme: 'panda', imageAlt: 'A hand-painted ceramic mug featuring a cute panda' },
+  { id: 'panda-mug-1', name: 'Panda Hug Mug', priceCents: 2800, type: 'mug', theme: 'panda', imageAlt: 'A hand-painted ceramic mug featuring a cute panda', image: 'panda-mug.png' },
   { id: 'dog-mug-1', name: 'Puppy Paws Mug', priceCents: 2600, type: 'mug', theme: 'dog', imageAlt: 'A ceramic mug with playful dog paw prints' },
   { id: 'cat-plate-1', name: 'Curious Cat Plate', priceCents: 3200, type: 'plate', theme: 'cat', imageAlt: 'A hand-painted dessert plate with a curious cat' },
   { id: 'floral-plate-1', name: 'Texas Wildflower Plate', priceCents: 3400, type: 'plate', theme: 'floral', imageAlt: 'A dinner plate with Texas wildflower motifs' },

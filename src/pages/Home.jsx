@@ -13,7 +13,7 @@ export default function Home(){
             <p className="text-lg text-slate-700">Plates and mugs lovingly crafted and hand‑painted by a senior artist. Themes include pandas, dogs, cats, and Texas florals. When you shop here, you support a local small business and a creative grandma.</p>
             <div className="flex gap-3">
               <Link to="/shop" className="rounded-md bg-brand px-4 py-2 font-medium text-white hover:shadow">Shop Ceramics</Link>
-              <Link to="/about" className="rounded-md border border-slate-200 px-4 py-2 hover:shadow">Meet Paw Paw</Link>
+              <Link to="/about" className="rounded-md border border-slate-200 px-4 py-2 hover:shadow">Meet Pa Pa</Link>
             </div>
             <div className="flex flex-wrap gap-2 pt-1 text-sm" aria-label="Local and small business badges">
               {['San Antonio, TX','Small Business','Senior Artist','Hand Painted'].map(b => (
@@ -42,7 +42,7 @@ export default function Home(){
         <div className="container grid items-start gap-6 md:grid-cols-2">
           <div>
             <h3 className="mb-2 text-lg font-semibold">Why Shop Local?</h3>
-            <p>Every purchase helps keep art alive in San Antonio. Paw Paw is a senior citizen who pours love and patience into each piece. Your support goes directly to a local artist and her small business.</p>
+            <p>Every purchase helps keep art alive in San Antonio. Pa Pa is a senior citizen who pours love and patience into each piece. Your support goes directly to a local artist and her small business.</p>
           </div>
           <div className="grid gap-3">
             {[['🎨','One‑of‑a‑kind','No two pieces are the same—each is hand‑painted with care.'],['🌸','Nature & Pets','Beloved themes: pandas, pups, kitties, and Texas blooms.'],['🤝','Community','Supporting a neighbor keeps your dollars close to home.']].map(([icon,title,desc]) => (

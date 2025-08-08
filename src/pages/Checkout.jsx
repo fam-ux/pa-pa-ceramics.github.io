@@ -10,7 +10,7 @@ export default function Checkout(){
 
   const emailHref = useMemo(() => {
     const lines = [
-      'Hi Paw Paw,',
+      'Hi Pa Pa,',
       '',
       'I would like to purchase the following items:',
       ...items.map(i => `- ${i.name} x${i.quantity} — ${(i.priceCents*i.quantity/100).toFixed(2)}`),
@@ -21,14 +21,14 @@ export default function Checkout(){
       'Phone:',
       'Pickup or shipping address (city, state):',
     ]
-    const subject = encodeURIComponent('Order from Paw Paw Ceramics website')
+    const subject = encodeURIComponent('Order from Pa Pa Ceramics website')
     const body = encodeURIComponent(lines.join('\n'))
     return `mailto:${email}?subject=${subject}&body=${body}`
   }, [items, total, email])
 
   const payPalUrl = payments.paypalMe ? `https://paypal.me/${payments.paypalMe}/${total}` : null
   const cashAppUrl = payments.cashTag ? `https://cash.app/$${payments.cashTag}/${total}` : null
-  const venmoUrl = payments.venmo ? `https://venmo.com/${payments.venmo}?txn=pay&amount=${total}&note=${encodeURIComponent('Paw Paw Ceramics order')}` : null
+  const venmoUrl = payments.venmo ? `https://venmo.com/${payments.venmo}?txn=pay&amount=${total}&note=${encodeURIComponent('Pa Pa Ceramics order')}` : null
 
   
 
