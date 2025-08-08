@@ -3,7 +3,7 @@ export default function About(){
     <section className="py-8">
       <div className="container grid items-center gap-8 md:grid-cols-2">
         <div className="space-y-4">
-          <h1 className="text-2xl font-bold">Meet Pa Pa</h1>
+          <h1 className="text-2xl font-bold">Meet Paw Paw</h1>
           <p>I am not an artist nor a business woman. I am just an ordinary retiree who loves to draw, paint, and do crafts.</p>
           <p>All of my products are drawn and painted by hand. The following is a general outline of my process:</p>
           <ul className="list-disc pl-6 space-y-1 text-slate-700">
