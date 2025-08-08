@@ -1,4 +1,6 @@
 import { defineConfig } from 'vite'
+import fs from 'node:fs'
+import path from 'node:path'
 import react from '@vitejs/plugin-react'
 
 // https://vitejs.dev/config/
@@ -11,8 +13,22 @@ const isGithubActions = process.env.GITHUB_ACTIONS === 'true'
 const isUserOrOrgPagesRepo =
   repositoryOwner && repositoryName && repositoryName.toLowerCase() === `${repositoryOwner.toLowerCase()}.github.io`
 const explicitBase = process.env.VITE_BASE && process.env.VITE_BASE.length > 0 ? process.env.VITE_BASE : undefined
-const computedBase =
-  explicitBase ?? (isGithubActions ? (isUserOrOrgPagesRepo ? '/' : `/${repositoryName}/`) : '/')
+// Fallback to package.json name when not building in Actions, so local builds for GH Pages get the right base
+let packageNameBase = undefined
+try {
+  const pkgPath = path.resolve(process.cwd(), 'package.json')
+  const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'))
+  if (pkg?.name && typeof pkg.name === 'string') {
+    packageNameBase = `/${pkg.name.replace(/^\/+|\/+$/g, '')}/`
+  }
+} catch {}
+
+const computedBase = (() => {
+  if (explicitBase) return explicitBase
+  if (isGithubActions) return isUserOrOrgPagesRepo ? '/' : `/${repositoryName}/`
+  // Local build/custom domains: use root unless explicitly overridden
+  return packageNameBase ?? '/'
+})()
 
 export default defineConfig({
   base: computedBase,
