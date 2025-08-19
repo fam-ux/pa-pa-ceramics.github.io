@@ -42,10 +42,10 @@ export default function Home(){
         <div className="container grid items-start gap-6 md:grid-cols-2">
           <div>
             <h3 className="mb-2 text-lg font-semibold">Why Shop Local?</h3>
-            <p>Every purchase helps keep art alive in San Antonio. Paw Paw is a senior citizen who pours love and patience into each piece. This is a family project — the name was created by her grandson, and the website was designed by him too. Your support goes directly to a local artist and her small family business.</p>
+            <p>Every purchase helps keep art alive in San Antonio. Paw Paw is a senior citizen who pours love and patience into each piece. This is a family project — the name was created by her grandson, and the website was designed by him too. Your support will keep Paw Paw's Art alive and fill her retirement journey with joy and delight.</p>
           </div>
           <div className="grid gap-3">
-            {[['🎨','One‑of‑a‑kind','No two pieces are the same—each is hand‑painted with care.'],['🌸','Nature & Pets','Beloved themes: pandas, pups, kitties, and Texas blooms.'],['👨‍👩‍👧','Family Project','Named by her grandson and website designed by him — built with love.'],['🤝','Community','Supporting a neighbor keeps your dollars close to home.']].map(([icon,title,desc]) => (
+            {[['🎨','One‑of‑a‑kind','No two pieces are the same. Each is hand-drawn and hand-painted with care. It is also a great gift for all special occasions-to celebrate and enjoy every day!'],['🌸','Nature & Pets','Beloved themes: Pandas, Pups, Kitties, and Flowers.'],['👨‍👩‍👧','Family Project','Named by her grandson and website designed by him — built with love.'],['🤝','Community','Supporting a senior retiree\'s hand-made crafts will help them countinue to live better and full of joy!']].map(([icon,title,desc]) => (
               <div key={title} className="flex items-start gap-3 rounded-xl border border-slate-200 bg-white p-4">
                 <div className="text-xl">{icon}</div>
                 <div>
