@@ -10,7 +10,7 @@ export default function Home(){
         <div className="container grid items-center gap-8 py-12 md:grid-cols-2">
           <div className="space-y-4">
             <h1 className="text-3xl font-bold leading-tight md:text-4xl">Hand‑drawn, Hand‑painted with Care</h1>
-            <p className="text-lg text-slate-700">I’m not an artist or a business woman, just a retiree who loves to draw, paint, and do crafts. "Paw Paw" means grandma in our culture, and every piece is hand-painted, oven-cured, and sealed with care so it can bring a little joy to your home.</p>
+            <p className="text-lg text-slate-700">I’m not an artist or a business woman, just a retiree who loves to draw, paint, and do crafts. "Paw Paw" means grandma in our culture, and every piece is hand-drawn,hand-painted, oven-cured, and sealed with care so it can bring a little joy to your home.</p>
             <div className="flex gap-3">
               <Link to="/shop" className="rounded-md bg-brand px-4 py-2 font-medium text-white hover:shadow">Shop</Link>
               <Link to="/about" className="rounded-md border border-slate-200 px-4 py-2 hover:shadow">Meet Paw Paw</Link>
@@ -42,10 +42,10 @@ export default function Home(){
         <div className="container grid items-start gap-6 md:grid-cols-2">
           <div>
             <h3 className="mb-2 text-lg font-semibold">Why Shop Local?</h3>
-            <p>Every purchase helps keep art alive in San Antonio. Paw Paw is a senior citizen who pours love and patience into each piece. This is a family project — the name was created by her grandson, and the website was designed by him too. Your support will keep Paw Paw's Art alive and fill her retirement journey with joy and delight.</p>
+            <p>Every purchase helps keep art alive in San Antonio. Paw Paw is a senior citizen who pours love and patience into each piece. This is a family project with the name and website created by her grandson. Your support will keep Paw Paw's Art alive and fill her retirement journey with joy and delight.</p>
           </div>
           <div className="grid gap-3">
-            {[['🎨','One‑of‑a‑kind','No two pieces are the same. Each is hand-drawn and hand-painted with care. It is also a great gift for all special occasions-to celebrate and enjoy every day!'],['🌸','Nature & Pets','Beloved themes: Pandas, Pups, Kitties, and Flowers.'],['👨‍👩‍👧','Family Project','Named by her grandson and website designed by him — built with love.'],['🤝','Community','Supporting a senior retiree\'s hand-made crafts will help them countinue to live better and full of joy!']].map(([icon,title,desc]) => (
+            {[['🎨','One‑of‑a‑kind','No two pieces are the same. Each is hand-drawn, hand-painted with care. It is also a great gift for all special occasions-to celebrate and enjoy every day!'],['🌸','Nature & Pets','Beloved themes: Pandas, Pups, Kitties, and Flowers.'],['👨‍👩‍👧','Family Project','Website built with love by her grandson.'],['🤝','Community','Supporting a senior retiree\'s hand-made crafts will help them countinue to live better and full of joy!']].map(([icon,title,desc]) => (
               <div key={title} className="flex items-start gap-3 rounded-xl border border-slate-200 bg-white p-4">
                 <div className="text-xl">{icon}</div>
                 <div>

@@ -9,15 +9,14 @@ export default function Shop(){
   return (
     <section className="py-8">
       <div className="container">
-        <h1 className="mb-4 text-2xl font-bold">Shop Handmade Ceramics</h1>
+        <h1 className="mb-4 text-2xl font-bold">Shop Handmade Products</h1>
         <div className="mb-4 flex gap-3">
           <label className="text-sm text-slate-600">Theme
             <select className="ml-2 rounded-md border border-slate-200 px-3 py-2" value={theme} onChange={e=>setTheme(e.target.value)}>
               <option value="all">All</option>
-              <option value="panda">Panda</option>
-              <option value="dog">Dog</option>
-              <option value="cat">Cat</option>
-              <option value="floral">Flowers</option>
+              <option value="floral">Floral</option>
+              <option value="animals">Animals</option>
+              <option value="nature">Nature</option>
             </select>
           </label>
           <label className="text-sm text-slate-600">Type
@@ -25,6 +24,7 @@ export default function Shop(){
               <option value="all">All</option>
               <option value="mug">Mugs</option>
               <option value="plate">Plates</option>
+              <option value="bowl">Bowls</option>
             </select>
           </label>
         </div>

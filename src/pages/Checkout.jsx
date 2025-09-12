@@ -72,7 +72,7 @@ export default function Checkout(){
                 <a href={emailHref} className="rounded-md bg-brand px-4 py-2 font-medium text-white hover:shadow">Email order summary</a>
                 <button className="rounded-md border border-slate-200 px-4 py-2 hover:shadow" onClick={clearCart}>Clear cart</button>
               </div>
-              <p className="mt-2 text-sm text-slate-600">We’ll reply with pickup/shipping details and a Venmo link to pay securely.</p>
+              <p className="mt-2 text-sm text-slate-600">We’ll reply with pickup/shipping/payment details.</p>
             </div>
             {/* <div className="rounded-xl border border-slate-200 p-4">
               <h2 className="mb-2 text-lg font-semibold">Pay online (optional)</h2>

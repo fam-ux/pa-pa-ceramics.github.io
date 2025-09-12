@@ -7,8 +7,7 @@ export default function Contact(){
       <div className="container max-w-2xl">
         <h1 className="mb-4 text-2xl font-bold">Contact</h1>
         <p className="text-slate-700">
-          Questions or custom orders? Email us at{' '}
-          <a className="text-brand underline" href={`mailto:${email}`}>{email}</a>.
+          Questions or custom orders? Email me at {email} or leave a message at (210)-391-zero-seven-six-seven (will respond within 24 hours).
         </p>
       </div>
     </section>
