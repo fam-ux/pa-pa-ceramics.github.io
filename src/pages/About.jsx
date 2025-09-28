@@ -21,12 +21,16 @@ export default function About(){
             </ul>
           </div>
           <p>Because items are hand drawn and painted, there may be slight differences in the color and shape between similar products.</p>
-          <p>"Paw Paw Creations" was named by my grandson, and this website was designed by him too — a true family project.</p>
+          <p>"Paw Paw Creations" was named by my grandson, and this website was designed by him too.</p>
           <p>I deeply appreciate your support. It is my biggest encouragement and empowers me to succeed!</p>
           <p className="italic">Sincerely,<br/>Ha Le</p>
         </div>
-        <div className="mx-auto max-w-sm rounded-2xl border border-slate-200 bg-white p-3 shadow">
-          <div className="h-80 rounded-xl bg-gradient-to-br from-emerald-50 via-white to-purple-50" />
+        <div className="mx-auto max-w-lg rounded-2xl border border-slate-200 bg-white p-3 shadow">
+          <img 
+            src={`${import.meta.env.BASE_URL}bio_creation_process.jpg`}
+            alt="Bio creation process showing hand-painting technique"
+            className="h-96 w-full rounded-xl object-cover"
+          />
         </div>
       </div>
     </section>

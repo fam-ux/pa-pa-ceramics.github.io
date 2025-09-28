@@ -7,7 +7,7 @@ export default function Navbar(){
     <header className="sticky top-0 z-20 border-b border-slate-200 bg-white/80 backdrop-blur">
       <div className="container flex flex-wrap items-center justify-between gap-2 py-3">
         <Link to="/" className="flex w-full items-center gap-2 font-bold sm:w-auto">
-          <img src={`${import.meta.env.BASE_URL}favicon.svg`} alt="Paw Paw Creations" className="h-7 w-7" />
+          <img src={`${import.meta.env.BASE_URL}favicon.png`} alt="Paw Paw Creations" className="h-7 w-7" />
           <span>Paw Paw Creations</span>
         </Link>
         <nav className="mt-1 flex w-full items-center justify-end gap-1 sm:mt-0 sm:w-auto">

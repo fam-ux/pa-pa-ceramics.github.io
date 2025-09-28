@@ -3,13 +3,17 @@ import products from '../shared/products'
 import ProductCard from '../components/ProductCard'
 
 export default function Home(){
-  const featured = products.slice(0,4)
+  const featured = products.filter(p => 
+    p.id === 'lotus-flower-15oz' || 
+    p.id === 'lotus-flower-16oz' || 
+    p.id === 'lotus-flower-plate'
+  )
   return (
     <div>
       <section className="bg-gradient-to-b from-brand-light/60 to-transparent">
         <div className="container grid items-center gap-8 py-12 md:grid-cols-2">
           <div className="space-y-4">
-            <h1 className="text-3xl font-bold leading-tight md:text-4xl">Hand‑drawn, Hand‑painted with Care</h1>
+            <h1 className="text-4xl font-bold leading-tight md:text-5xl lg:text-6xl">Hand‑drawn, Hand‑painted with Care</h1>
             <p className="text-lg text-slate-700">I’m not an artist or a business woman, just a retiree who loves to draw, paint, and do crafts. "Paw Paw" means grandma in our culture, and every piece is hand-drawn,hand-painted, oven-cured, and sealed with care so it can bring a little joy to your home.</p>
             <div className="flex gap-3">
               <Link to="/shop" className="rounded-md bg-brand px-4 py-2 font-medium text-white hover:shadow">Shop</Link>
@@ -22,8 +26,11 @@ export default function Home(){
             </div>
           </div>
           <div className="relative h-72 md:h-80">
-            <div className="absolute left-8 top-8 h-48 w-48 -rotate-6 rounded-full border-8 border-slate-200 bg-white shadow-lg md:h-60 md:w-60"/>
-            <div className="absolute bottom-4 right-6 h-40 w-56 rounded-2xl border-8 border-slate-200 bg-white shadow-lg md:h-48 md:w-64"/>
+            <img 
+              src={`${import.meta.env.BASE_URL}front_page_showcase.jpg`}
+              alt="Showcase of hand-painted ceramic pieces"
+              className="h-full w-full object-cover rounded-lg shadow-lg"
+            />
           </div>
         </div>
       </section>

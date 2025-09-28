@@ -81,6 +81,19 @@ const products = [
     ]
   },
   { 
+    id: 'texas-bluebonnet-12oz-v2', 
+    name: 'Texas Bluebonnet Mug V2 (12oz)', 
+    priceCents: 1500, 
+    type: 'mug', 
+    theme: 'floral', 
+    imageAlt: 'A ceramic mug painted with Texas bluebonnets - variant 2',
+    images: [
+      'texas_bluebonnet_12oz_mug_1.jpg',
+      'texas_bluebonnet_12oz_mug_2.jpg',
+      'texas_bluebonnet_12oz_mug_3.jpg'
+    ]
+  },
+  { 
     id: 'texas-bluebonnet-bowl', 
     name: 'Texas Bluebonnet Bowl (5.5")', 
     priceCents: 1800, 
@@ -122,7 +135,7 @@ const products = [
   },
   { 
     id: 'lotus-flower-plate', 
-    name: 'Lotus Flower Plate (6")', 
+    name: 'Lotus Flower Plate (5.5")', 
     priceCents: 2500, 
     type: 'plate', 
     theme: 'floral', 
@@ -218,7 +231,7 @@ const products = [
   },
   { 
     id: 'bamboo-forest-plate', 
-    name: 'Bamboo Forest Plate (6")', 
+    name: 'Bamboo Forest Plate (5.5")', 
     priceCents: 2500, 
     type: 'plate', 
     theme: 'nature', 
@@ -244,7 +257,7 @@ const products = [
   },
   { 
     id: 'pups-lover-plate', 
-    name: 'Pups Lover Plate (6")', 
+    name: 'Pups Lover Plate (5.5")', 
     priceCents: 2500, 
     type: 'plate', 
     theme: 'animals', 
@@ -252,6 +265,17 @@ const products = [
     images: [
       'pups_lover_6in_plate.jpg',
       'pups_lover_6in_olate_2.jpg'
+    ]
+  },
+  { 
+    id: 'pups-lover-plate-8in', 
+    name: 'Pups Lover Plate (8")', 
+    priceCents: 3500, 
+    type: 'plate', 
+    theme: 'animals', 
+    imageAlt: 'A larger ceramic plate featuring cute puppies',
+    images: [
+      'pups_lover_8in_plate.jpg'
     ]
   },
   { 
