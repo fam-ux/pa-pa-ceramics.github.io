@@ -86,22 +86,22 @@ export default function ImageGallery({ images, imageAlt, productName }) {
         )}
       </div>
       
-      {images.length > 1 && (
-        <div className="flex justify-center gap-1 mt-2">
-          {images.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => scrollToImage(index)}
-              className={`h-2 w-2 rounded-full transition-colors ${
-                index === currentIndex 
-                  ? 'bg-slate-600' 
-                  : 'bg-slate-300 hover:bg-slate-400'
-              }`}
-              aria-label={`View image ${index + 1}`}
-            />
-          ))}
-        </div>
-      )}
+      <div className="flex justify-center gap-1 mt-2">
+        {images.length > 1 ? images.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => scrollToImage(index)}
+            className={`h-2 w-2 rounded-full transition-colors ${
+              index === currentIndex 
+                ? 'bg-slate-600' 
+                : 'bg-slate-300 hover:bg-slate-400'
+            }`}
+            aria-label={`View image ${index + 1}`}
+          />
+        )) : (
+          <div className="h-2 w-2 rounded-full bg-slate-300" />
+        )}
+      </div>
     </div>
   )
 }

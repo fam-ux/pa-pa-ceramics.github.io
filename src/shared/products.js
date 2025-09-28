@@ -82,7 +82,7 @@ const products = [
   },
   { 
     id: 'texas-bluebonnet-12oz-v2', 
-    name: 'Texas Bluebonnet Mug V2 (12oz)', 
+    name: 'Texas Bluebonnet Mug (12oz)', 
     priceCents: 1500, 
     type: 'mug', 
     theme: 'floral', 
