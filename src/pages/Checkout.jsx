@@ -10,7 +10,7 @@ export default function Checkout(){
 
   const emailHref = useMemo(() => {
     const lines = [
-      'Hi Pa Pa,',
+      'Hi Mrs. Le,',
       '',
       'I would like to purchase the following items:',
       ...items.map(i => `- ${i.name} x${i.quantity} — ${(i.priceCents*i.quantity/100).toFixed(2)}`),

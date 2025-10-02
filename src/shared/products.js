@@ -26,17 +26,28 @@ const products = [
       'lavender_flower_12oz_3.jpg'
     ]
   },
-  { 
-    id: 'lavender-flower-16oz', 
-    name: 'Lavender Flower Mug (16oz)', 
-    priceCents: 2200, 
-    type: 'mug', 
-    theme: 'floral', 
+  {
+    id: 'lavender-flower-16oz',
+    name: 'Lavender Flower Mug (16oz)',
+    priceCents: 2200,
+    type: 'mug',
+    theme: 'floral',
     imageAlt: 'A hand-painted ceramic mug featuring lavender flowers',
     images: [
       'lavender_flower_16oz_mug_1.jpg',
       'lavender_flower_16oz_mug_2.jpg',
       'lavender_flower_16oz_mug_3.jpg'
+    ]
+  },
+  {
+    id: 'lavender-flower-plate-8in',
+    name: 'Lavender Flower Plate (8")',
+    priceCents: 3500,
+    type: 'plate',
+    theme: 'floral',
+    imageAlt: 'A ceramic plate with lavender flower design',
+    images: [
+      'lavender_flower_8in_plate.jpeg'
     ]
   },
   
@@ -93,16 +104,27 @@ const products = [
       'texas_bluebonnet_12oz_mug_3.jpg'
     ]
   },
-  { 
-    id: 'texas-bluebonnet-bowl', 
-    name: 'Texas Bluebonnet Bowl (5.5")', 
-    priceCents: 1800, 
-    type: 'bowl', 
-    theme: 'floral', 
+  {
+    id: 'texas-bluebonnet-bowl',
+    name: 'Texas Bluebonnet Bowl (5.5")',
+    priceCents: 1800,
+    type: 'bowl',
+    theme: 'floral',
     imageAlt: 'A ceramic bowl with Texas bluebonnet design',
     images: [
       'texas_bluebonnet_55bowl_1.jpg',
       'texas_bluebonnet_55bowl_2.jpg'
+    ]
+  },
+  {
+    id: 'texas-bluebonnet-plate-8in',
+    name: 'Texas Bluebonnet Plate (8")',
+    priceCents: 3500,
+    type: 'plate',
+    theme: 'floral',
+    imageAlt: 'A ceramic plate with Texas bluebonnet design',
+    images: [
+      'texas_bluebonnet_8in_plate.jpeg'
     ]
   },
   
@@ -135,7 +157,7 @@ const products = [
   },
   { 
     id: 'lotus-flower-plate', 
-    name: 'Lotus Flower Plate (5.5")', 
+    name: 'Lotus Flower Plate (8")', 
     priceCents: 2500, 
     type: 'plate', 
     theme: 'floral', 
@@ -161,12 +183,12 @@ const products = [
   },
   
   // Tulip Flower Collection
-  { 
-    id: 'tulip-flower-12oz', 
-    name: 'Tulip Flower Mug (12oz)', 
-    priceCents: 1500, 
-    type: 'mug', 
-    theme: 'floral', 
+  {
+    id: 'tulip-flower-12oz',
+    name: 'Tulip Flower Mug (12oz)',
+    priceCents: 1500,
+    type: 'mug',
+    theme: 'floral',
     imageAlt: 'A ceramic mug with tulip flower design',
     images: [
       'tulip_flower_12oz_1.jpg',
@@ -174,9 +196,73 @@ const products = [
       'tulip_flower_12oz_3.jpg'
     ]
   },
+  {
+    id: 'tulip-flower-15oz',
+    name: 'Tulip Flower Mug (15oz)',
+    priceCents: 1800,
+    type: 'mug',
+    theme: 'floral',
+    imageAlt: 'A ceramic mug with tulip flower design',
+    images: [
+      'tulip_flower_mug_15oz_1.jpeg',
+      'tulip_flower_mug_15oz_2.jpeg',
+      'tulip_flower_mug_15oz_3.jpeg'
+    ]
+  },
+  {
+    id: 'tulip-flower-bowl',
+    name: 'Tulip Flower Bowl (5.5")',
+    priceCents: 1800,
+    type: 'bowl',
+    theme: 'floral',
+    imageAlt: 'A ceramic bowl with tulip flower design',
+    images: [
+      'tulip_flower_bowl_5.5in_1.jpeg',
+      'tulip_flower_bowl_5.5in_2.jpeg'
+    ]
+  },
+  {
+    id: 'tulip-flower-plate-8in',
+    name: 'Tulip Flower Plate (8")',
+    priceCents: 3500,
+    type: 'plate',
+    theme: 'floral',
+    imageAlt: 'A ceramic plate with tulip flower design',
+    images: [
+      'tulip_flower_plate_8in.jpeg'
+    ]
+  },
   
+  // Butterfly Collection
+  {
+    id: 'butterfly-mug-12oz',
+    name: 'Butterfly Mug (12oz)',
+    priceCents: 1500,
+    type: 'mug',
+    theme: 'nature',
+    imageAlt: 'A ceramic mug with butterfly design',
+    images: [
+      'butterfly_mug_12oz_1.jpeg',
+      'butterfly_mug_12oz_2.jpeg',
+      'butterfly_mug_12oz_3.jpeg'
+    ]
+  },
+  {
+    id: 'butterfly-2-mug-12oz',
+    name: 'Butterfly Mug (12oz) ',
+    priceCents: 1500,
+    type: 'mug',
+    theme: 'nature',
+    imageAlt: 'A ceramic mug with butterfly design',
+    images: [
+      'butterfly_2_mug_12oz_1.jpeg',
+      'butterfly_2_mug_12oz_2.jpeg',
+      'butterfly_2_mug_12oz_3.jpeg'
+    ]
+  },
+
   // Panda Family Collection
-  { 
+  {
     id: 'panda-family-11oz', 
     name: 'Panda Family Mug (11oz)', 
     priceCents: 1500, 
@@ -202,16 +288,27 @@ const products = [
       'panda_family_3_15oz.jpg'
     ]
   },
-  { 
-    id: 'panda-family-bowl', 
-    name: 'Panda Family Bowl (5.5")', 
-    priceCents: 1800, 
-    type: 'bowl', 
-    theme: 'animals', 
+  {
+    id: 'panda-family-bowl',
+    name: 'Panda Family Bowl (5.5")',
+    priceCents: 1800,
+    type: 'bowl',
+    theme: 'animals',
     imageAlt: 'A ceramic bowl with panda family design',
     images: [
       'panda_family_55bowl_1.jpg',
       'panda_family_55bowl_2.jpg'
+    ]
+  },
+  {
+    id: 'panda-plate-8in',
+    name: 'Panda Plate (8")',
+    priceCents: 3500,
+    type: 'plate',
+    theme: 'animals',
+    imageAlt: 'A ceramic plate with panda design',
+    images: [
+      'panda_8in_plate.jpeg'
     ]
   },
   
@@ -231,7 +328,7 @@ const products = [
   },
   { 
     id: 'bamboo-forest-plate', 
-    name: 'Bamboo Forest Plate (5.5")', 
+    name: 'Bamboo Forest Plate (8")', 
     priceCents: 2500, 
     type: 'plate', 
     theme: 'nature', 
@@ -257,7 +354,7 @@ const products = [
   },
   { 
     id: 'pups-lover-plate', 
-    name: 'Pups Lover Plate (5.5")', 
+    name: 'Pups Lover Plate (8")', 
     priceCents: 2500, 
     type: 'plate', 
     theme: 'animals', 
