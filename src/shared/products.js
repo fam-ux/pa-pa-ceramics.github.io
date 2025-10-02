@@ -42,7 +42,7 @@ const products = [
   {
     id: 'lavender-flower-plate-8in',
     name: 'Lavender Flower Plate (8")',
-    priceCents: 3500,
+    priceCents: 2500,
     type: 'plate',
     theme: 'floral',
     imageAlt: 'A ceramic plate with lavender flower design',
@@ -119,7 +119,7 @@ const products = [
   {
     id: 'texas-bluebonnet-plate-8in',
     name: 'Texas Bluebonnet Plate (8")',
-    priceCents: 3500,
+    priceCents: 2500,
     type: 'plate',
     theme: 'floral',
     imageAlt: 'A ceramic plate with Texas bluebonnet design',
@@ -224,7 +224,7 @@ const products = [
   {
     id: 'tulip-flower-plate-8in',
     name: 'Tulip Flower Plate (8")',
-    priceCents: 3500,
+    priceCents: 2500,
     type: 'plate',
     theme: 'floral',
     imageAlt: 'A ceramic plate with tulip flower design',
@@ -303,7 +303,7 @@ const products = [
   {
     id: 'panda-plate-8in',
     name: 'Panda Plate (8")',
-    priceCents: 3500,
+    priceCents: 2500,
     type: 'plate',
     theme: 'animals',
     imageAlt: 'A ceramic plate with panda design',
@@ -367,7 +367,7 @@ const products = [
   { 
     id: 'pups-lover-plate-8in', 
     name: 'Pups Lover Plate (8")', 
-    priceCents: 3500, 
+    priceCents: 2500, 
     type: 'plate', 
     theme: 'animals', 
     imageAlt: 'A larger ceramic plate featuring cute puppies',
