@@ -2,7 +2,8 @@ import { useState, useRef } from 'react'
 
 export default function ImageGallery({ images, imageAlt, productName }) {
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [imageSources, setImageSources] = useState(() => 
+  const [isEnlarged, setIsEnlarged] = useState(false)
+  const [imageSources, setImageSources] = useState(() =>
     images.map(img => ({
       original: img,
       current: img,
@@ -57,9 +58,10 @@ export default function ImageGallery({ images, imageAlt, productName }) {
         <img
           src={`${baseUrl}products/${imageSources[currentIndex].current}`}
           alt={`${imageAlt || productName} - Image ${currentIndex + 1}`}
-          className="h-44 w-auto object-contain"
+          className="h-44 w-auto object-contain cursor-pointer hover:opacity-90 transition-opacity"
           loading="lazy"
           onError={() => handleImageError(currentIndex)}
+          onClick={() => setIsEnlarged(true)}
         />
         
         {images.length > 1 && (
@@ -92,8 +94,8 @@ export default function ImageGallery({ images, imageAlt, productName }) {
             key={index}
             onClick={() => scrollToImage(index)}
             className={`h-2 w-2 rounded-full transition-colors ${
-              index === currentIndex 
-                ? 'bg-slate-600' 
+              index === currentIndex
+                ? 'bg-slate-600'
                 : 'bg-slate-300 hover:bg-slate-400'
             }`}
             aria-label={`View image ${index + 1}`}
@@ -102,6 +104,53 @@ export default function ImageGallery({ images, imageAlt, productName }) {
           <div className="h-2 w-2 rounded-full bg-slate-300" />
         )}
       </div>
+
+      {isEnlarged && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
+          onClick={() => setIsEnlarged(false)}
+        >
+          <div className="relative max-h-[90vh] max-w-[90vw]">
+            <button
+              onClick={() => setIsEnlarged(false)}
+              className="absolute -top-10 right-0 text-white hover:text-slate-300"
+              aria-label="Close"
+            >
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="currentColor">
+                <path d="M8 8l16 16M24 8L8 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+              </svg>
+            </button>
+            <img
+              src={`${baseUrl}products/${imageSources[currentIndex].current}`}
+              alt={`${imageAlt || productName} - Image ${currentIndex + 1}`}
+              className="max-h-[90vh] max-w-full object-contain"
+              onClick={(e) => e.stopPropagation()}
+            />
+            {images.length > 1 && (
+              <>
+                <button
+                  onClick={(e) => { e.stopPropagation(); prevImage(); }}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-white/90 p-3 shadow-lg hover:bg-white"
+                  aria-label="Previous image"
+                >
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M15 4L7 12l8 8" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </button>
+                <button
+                  onClick={(e) => { e.stopPropagation(); nextImage(); }}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-white/90 p-3 shadow-lg hover:bg-white"
+                  aria-label="Next image"
+                >
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9 4l8 8-8 8" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </button>
+              </>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   )
 }
