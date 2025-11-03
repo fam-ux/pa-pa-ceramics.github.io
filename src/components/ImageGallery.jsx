@@ -10,6 +10,11 @@ export default function ImageGallery({ images, imageAlt, productName }) {
       fallbackStep: 0
     }))
   )
+  const [scale, setScale] = useState(1)
+  const [position, setPosition] = useState({ x: 0, y: 0 })
+  const [isDragging, setIsDragging] = useState(false)
+  const [dragStart, setDragStart] = useState({ x: 0, y: 0 })
+  const imageRef = useRef(null)
   const baseUrl = (import.meta.env && import.meta.env.BASE_URL) ? import.meta.env.BASE_URL : '/'
 
   const handleImageError = (index) => {
@@ -35,10 +40,119 @@ export default function ImageGallery({ images, imageAlt, productName }) {
 
   const nextImage = () => {
     setCurrentIndex((prev) => (prev + 1) % images.length)
+    resetZoom()
   }
 
   const prevImage = () => {
     setCurrentIndex((prev) => (prev - 1 + images.length) % images.length)
+    resetZoom()
+  }
+
+  const resetZoom = () => {
+    setScale(1)
+    setPosition({ x: 0, y: 0 })
+  }
+
+  const handleZoom = (delta, clientX, clientY) => {
+    const newScale = Math.min(Math.max(1, scale + delta), 5)
+
+    if (newScale === 1) {
+      resetZoom()
+    } else if (imageRef.current) {
+      const rect = imageRef.current.getBoundingClientRect()
+      const x = clientX - rect.left
+      const y = clientY - rect.top
+
+      const scaleChange = newScale / scale
+      setPosition(prev => ({
+        x: x - (x - prev.x) * scaleChange,
+        y: y - (y - prev.y) * scaleChange
+      }))
+      setScale(newScale)
+    }
+  }
+
+  const handleWheel = (e) => {
+    e.preventDefault()
+    const delta = e.deltaY > 0 ? -0.2 : 0.2
+    handleZoom(delta, e.clientX, e.clientY)
+  }
+
+  const handleMouseDown = (e) => {
+    if (scale > 1) {
+      setIsDragging(true)
+      setDragStart({
+        x: e.clientX - position.x,
+        y: e.clientY - position.y
+      })
+    }
+  }
+
+  const handleMouseMove = (e) => {
+    if (isDragging && scale > 1) {
+      setPosition({
+        x: e.clientX - dragStart.x,
+        y: e.clientY - dragStart.y
+      })
+    }
+  }
+
+  const handleMouseUp = () => {
+    setIsDragging(false)
+  }
+
+  const handleTouchStart = (e) => {
+    if (e.touches.length === 2) {
+      const touch1 = e.touches[0]
+      const touch2 = e.touches[1]
+      const distance = Math.hypot(
+        touch2.clientX - touch1.clientX,
+        touch2.clientY - touch1.clientY
+      )
+      imageRef.current.dataset.initialPinchDistance = distance
+      imageRef.current.dataset.initialScale = scale
+    } else if (e.touches.length === 1 && scale > 1) {
+      setIsDragging(true)
+      setDragStart({
+        x: e.touches[0].clientX - position.x,
+        y: e.touches[0].clientY - position.y
+      })
+    }
+  }
+
+  const handleTouchMove = (e) => {
+    if (e.touches.length === 2) {
+      e.preventDefault()
+      const touch1 = e.touches[0]
+      const touch2 = e.touches[1]
+      const distance = Math.hypot(
+        touch2.clientX - touch1.clientX,
+        touch2.clientY - touch1.clientY
+      )
+      const initialDistance = parseFloat(imageRef.current.dataset.initialPinchDistance)
+      const initialScale = parseFloat(imageRef.current.dataset.initialScale)
+      const newScale = Math.min(Math.max(1, initialScale * (distance / initialDistance)), 5)
+
+      if (newScale === 1) {
+        resetZoom()
+      } else {
+        setScale(newScale)
+      }
+    } else if (e.touches.length === 1 && isDragging && scale > 1) {
+      setPosition({
+        x: e.touches[0].clientX - dragStart.x,
+        y: e.touches[0].clientY - dragStart.y
+      })
+    }
+  }
+
+  const handleTouchEnd = () => {
+    setIsDragging(false)
+  }
+
+  const closeEnlarged = () => {
+    setIsEnlarged(false)
+    resetZoom()
   }
 
   if (!images || images.length === 0) {
@@ -108,11 +222,14 @@ export default function ImageGallery({ images, imageAlt, productName }) {
       {isEnlarged && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
-          onClick={() => setIsEnlarged(false)}
+          onClick={closeEnlarged}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUp}
+          onMouseLeave={handleMouseUp}
         >
           <div className="relative max-h-[90vh] max-w-[90vw]">
             <button
-              onClick={() => setIsEnlarged(false)}
+              onClick={closeEnlarged}
               className="absolute -top-10 right-0 text-white hover:text-slate-300"
               aria-label="Close"
             >
@@ -120,12 +237,81 @@ export default function ImageGallery({ images, imageAlt, productName }) {
                 <path d="M8 8l16 16M24 8L8 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
               </svg>
             </button>
-            <img
-              src={`${baseUrl}products/${imageSources[currentIndex].current}`}
-              alt={`${imageAlt || productName} - Image ${currentIndex + 1}`}
-              className="max-h-[90vh] max-w-full object-contain"
-              onClick={(e) => e.stopPropagation()}
-            />
+
+            {/* Zoom Controls */}
+            <div className="absolute bottom-4 left-4 flex gap-2 z-10">
+              <button
+                onClick={(e) => {
+                  e.stopPropagation()
+                  const rect = imageRef.current?.getBoundingClientRect()
+                  if (rect) {
+                    handleZoom(0.3, rect.left + rect.width / 2, rect.top + rect.height / 2)
+                  }
+                }}
+                className="rounded-full bg-white/90 p-2 shadow-lg hover:bg-white"
+                aria-label="Zoom in"
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <circle cx="11" cy="11" r="8"/>
+                  <path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/>
+                </svg>
+              </button>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation()
+                  const rect = imageRef.current?.getBoundingClientRect()
+                  if (rect) {
+                    handleZoom(-0.3, rect.left + rect.width / 2, rect.top + rect.height / 2)
+                  }
+                }}
+                className="rounded-full bg-white/90 p-2 shadow-lg hover:bg-white"
+                aria-label="Zoom out"
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <circle cx="11" cy="11" r="8"/>
+                  <path d="M21 21l-4.35-4.35M8 11h6"/>
+                </svg>
+              </button>
+              {scale > 1 && (
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    resetZoom()
+                  }}
+                  className="rounded-full bg-white/90 p-2 shadow-lg hover:bg-white"
+                  aria-label="Reset zoom"
+                >
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M1 4v6h6M23 20v-6h-6"/>
+                    <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/>
+                  </svg>
+                </button>
+              )}
+            </div>
+
+            <div
+              className="overflow-hidden"
+              style={{ cursor: isDragging ? 'grabbing' : (scale > 1 ? 'grab' : 'default') }}
+            >
+              <img
+                ref={imageRef}
+                src={`${baseUrl}products/${imageSources[currentIndex].current}`}
+                alt={`${imageAlt || productName} - Image ${currentIndex + 1}`}
+                className="max-h-[90vh] max-w-full object-contain transition-transform"
+                style={{
+                  transform: `translate(${position.x}px, ${position.y}px) scale(${scale})`,
+                  transformOrigin: '0 0'
+                }}
+                onClick={(e) => e.stopPropagation()}
+                onWheel={handleWheel}
+                onMouseDown={handleMouseDown}
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
+                draggable={false}
+              />
+            </div>
+
             {images.length > 1 && (
               <>
                 <button
