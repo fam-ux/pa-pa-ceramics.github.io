@@ -110,8 +110,17 @@ export default function ImageGallery({ images, imageAlt, productName }) {
         touch2.clientX - touch1.clientX,
         touch2.clientY - touch1.clientY
       )
+
+      // Calculate center point between fingers
+      const centerX = (touch1.clientX + touch2.clientX) / 2
+      const centerY = (touch1.clientY + touch2.clientY) / 2
+
       imageRef.current.dataset.initialPinchDistance = distance
       imageRef.current.dataset.initialScale = scale
+      imageRef.current.dataset.initialCenterX = centerX
+      imageRef.current.dataset.initialCenterY = centerY
+      imageRef.current.dataset.initialPositionX = position.x
+      imageRef.current.dataset.initialPositionY = position.y
     } else if (e.touches.length === 1 && scale > 1) {
       e.preventDefault()
       setIsDragging(true)
@@ -138,19 +147,22 @@ export default function ImageGallery({ images, imageAlt, productName }) {
       if (newScale === 1) {
         resetZoom()
       } else if (imageRef.current) {
-        // Calculate center point between two fingers
-        const centerX = (touch1.clientX + touch2.clientX) / 2
-        const centerY = (touch1.clientY + touch2.clientY) / 2
-
         const rect = imageRef.current.getBoundingClientRect()
-        const x = centerX - rect.left
-        const y = centerY - rect.top
+        const initialCenterX = parseFloat(imageRef.current.dataset.initialCenterX)
+        const initialCenterY = parseFloat(imageRef.current.dataset.initialCenterY)
+        const initialPositionX = parseFloat(imageRef.current.dataset.initialPositionX)
+        const initialPositionY = parseFloat(imageRef.current.dataset.initialPositionY)
 
-        const scaleChange = newScale / scale
-        setPosition(prev => ({
-          x: x - (x - prev.x) * scaleChange,
-          y: y - (y - prev.y) * scaleChange
-        }))
+        // Calculate the point relative to the image at the initial pinch center
+        const x = initialCenterX - rect.left
+        const y = initialCenterY - rect.top
+
+        // Calculate new position to keep the pinch center point stationary
+        const scaleChange = newScale / initialScale
+        setPosition({
+          x: x - (x - initialPositionX) * scaleChange,
+          y: y - (y - initialPositionY) * scaleChange
+        })
         setScale(newScale)
       }
     } else if (e.touches.length === 1 && isDragging && scale > 1) {
@@ -320,7 +332,7 @@ export default function ImageGallery({ images, imageAlt, productName }) {
                 className="max-h-[90vh] max-w-full object-contain"
                 style={{
                   transform: `translate(${position.x}px, ${position.y}px) scale(${scale})`,
-                  transformOrigin: 'center center',
+                  transformOrigin: '0 0',
                   transition: isDragging ? 'none' : 'transform 0.1s ease-out'
                 }}
                 onClick={(e) => e.stopPropagation()}
