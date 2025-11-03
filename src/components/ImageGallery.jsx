@@ -103,6 +103,7 @@ export default function ImageGallery({ images, imageAlt, productName }) {
 
   const handleTouchStart = (e) => {
     if (e.touches.length === 2) {
+      e.preventDefault()
       const touch1 = e.touches[0]
       const touch2 = e.touches[1]
       const distance = Math.hypot(
@@ -112,6 +113,7 @@ export default function ImageGallery({ images, imageAlt, productName }) {
       imageRef.current.dataset.initialPinchDistance = distance
       imageRef.current.dataset.initialScale = scale
     } else if (e.touches.length === 1 && scale > 1) {
+      e.preventDefault()
       setIsDragging(true)
       setDragStart({
         x: e.touches[0].clientX - position.x,
@@ -139,6 +141,7 @@ export default function ImageGallery({ images, imageAlt, productName }) {
         setScale(newScale)
       }
     } else if (e.touches.length === 1 && isDragging && scale > 1) {
+      e.preventDefault()
       setPosition({
         x: e.touches[0].clientX - dragStart.x,
         y: e.touches[0].clientY - dragStart.y
@@ -222,6 +225,7 @@ export default function ImageGallery({ images, imageAlt, productName }) {
       {isEnlarged && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
+          style={{ touchAction: 'none' }}
           onClick={closeEnlarged}
           onMouseMove={handleMouseMove}
           onMouseUp={handleMouseUp}
@@ -291,16 +295,20 @@ export default function ImageGallery({ images, imageAlt, productName }) {
 
             <div
               className="overflow-hidden"
-              style={{ cursor: isDragging ? 'grabbing' : (scale > 1 ? 'grab' : 'default') }}
+              style={{
+                cursor: isDragging ? 'grabbing' : (scale > 1 ? 'grab' : 'default'),
+                touchAction: 'none'
+              }}
             >
               <img
                 ref={imageRef}
                 src={`${baseUrl}products/${imageSources[currentIndex].current}`}
                 alt={`${imageAlt || productName} - Image ${currentIndex + 1}`}
-                className="max-h-[90vh] max-w-full object-contain transition-transform"
+                className="max-h-[90vh] max-w-full object-contain"
                 style={{
                   transform: `translate(${position.x}px, ${position.y}px) scale(${scale})`,
-                  transformOrigin: '0 0'
+                  transformOrigin: '0 0',
+                  transition: isDragging ? 'none' : 'transform 0.1s ease-out'
                 }}
                 onClick={(e) => e.stopPropagation()}
                 onWheel={handleWheel}
