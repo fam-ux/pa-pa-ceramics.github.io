@@ -137,7 +137,20 @@ export default function ImageGallery({ images, imageAlt, productName }) {
 
       if (newScale === 1) {
         resetZoom()
-      } else {
+      } else if (imageRef.current) {
+        // Calculate center point between two fingers
+        const centerX = (touch1.clientX + touch2.clientX) / 2
+        const centerY = (touch1.clientY + touch2.clientY) / 2
+
+        const rect = imageRef.current.getBoundingClientRect()
+        const x = centerX - rect.left
+        const y = centerY - rect.top
+
+        const scaleChange = newScale / scale
+        setPosition(prev => ({
+          x: x - (x - prev.x) * scaleChange,
+          y: y - (y - prev.y) * scaleChange
+        }))
         setScale(newScale)
       }
     } else if (e.touches.length === 1 && isDragging && scale > 1) {
@@ -307,7 +320,7 @@ export default function ImageGallery({ images, imageAlt, productName }) {
                 className="max-h-[90vh] max-w-full object-contain"
                 style={{
                   transform: `translate(${position.x}px, ${position.y}px) scale(${scale})`,
-                  transformOrigin: '0 0',
+                  transformOrigin: 'center center',
                   transition: isDragging ? 'none' : 'transform 0.1s ease-out'
                 }}
                 onClick={(e) => e.stopPropagation()}
