@@ -260,6 +260,30 @@ const products = [
       'butterfly_2_mug_12oz_3.jpeg'
     ]
   },
+  {
+    id: 'butterfly-mug-15oz',
+    name: 'Butterfly Mug (15oz)',
+    priceCents: 1800,
+    type: 'mug',
+    theme: 'nature',
+    imageAlt: 'A ceramic mug with butterfly design',
+    images: [
+      'butterfly_mug_15oz_1.jpg',
+      'butterfly_mug_15oz_2.jpg',
+      'butterfly_mug_15oz_3.jpg'
+    ]
+  },
+  {
+    id: 'butterfly-plate-8in',
+    name: 'Butterfly Plate (8")',
+    priceCents: 2500,
+    type: 'plate',
+    theme: 'nature',
+    imageAlt: 'A ceramic plate with butterfly design',
+    images: [
+      'butterfly_8in_plate.jpg'
+    ]
+  },
 
   // Panda Family Collection
   {
